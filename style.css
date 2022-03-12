@@ -35,7 +35,7 @@
 	height: 3rem;
 	background-color: black;
 	border-bottom: solid 1px #ffffff;
-	z-index: 2;
+	z-index: 20;
 }
 
 .nav-menu {
@@ -57,10 +57,6 @@ main {
 section {
 	padding-top: 6.5rem;
 	height: 100vh;
-}
-
-#home {
-	margin-top: 6rem;
 }
 
 #main-heading {
