@@ -21,11 +21,11 @@
 	left: 0;
 	z-index: -1;
 	background: url(/textures/2k_stars_milky_way.jpg) no-repeat center center;
-  background-size: cover;
-  
+	background-size: cover;
 }
 
 #header {
+	position: fixed;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -33,7 +33,9 @@
 	left: 0;
 	width: 100%;
 	height: 3rem;
+	background-color: black;
 	border-bottom: solid 1px #ffffff;
+	z-index: 2;
 }
 
 .nav-menu {
@@ -44,12 +46,21 @@
 	margin-left: 5rem;
 }
 
+.nav-item a {
+	text-decoration: none;
+}
+
 main {
 	width: 100vw;
 }
 
+section {
+	padding-top: 6.5rem;
+	height: 100vh;
+}
+
 #home {
-	margin-top: 3rem;
+	margin-top: 6rem;
 }
 
 #main-heading {
@@ -59,5 +70,15 @@ main {
 
 #sub-heading {
 	font-size: 2rem;
+	text-align: center;
+}
+
+.section-heading {
+	font-size: 3rem;
+	text-align: center;
+}
+
+.description {
+	font-size: 3rem;
 	text-align: center;
 }
