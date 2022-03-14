@@ -12,6 +12,10 @@
 	color: #ffffff;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 #bg {
 	/* this is not correct, need to check how to make it fully reposnsive */
 	width: 100vw;
@@ -39,6 +43,7 @@
 	z-index: 20;
 }
 
+/* TODO: need to add hover effect on menu items */
 .nav-menu {
 	display: flex;
 }
@@ -103,4 +108,24 @@ section {
 
 .apod-app-description {
 	font-size: 1rem;
+}
+
+footer {
+	display: flex;
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
+}
+
+#back-to-top {
+	font-size: 2rem;
+	margin-bottom: 5rem;
+	width: 10rem;
+	height: 10rem;
+	border-radius: 50%;
+}
+
+#back-to-top a {
+	color: black;
+	text-decoration: none;
 }
