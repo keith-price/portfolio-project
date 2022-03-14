@@ -29,6 +29,8 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(wInner, wHeight);
 camera.position.setZ(40);
+// camera.lookAt(moon.position)
+
 
 // Earth
 const earthTexture = new THREE.TextureLoader().load(
@@ -131,6 +133,7 @@ scene.add(sunLight);
 function animate() {
 	requestAnimationFrame(animate);
 
+	
 	// earth
 	earth.rotation.y += 0.001;
 	earthClouds.rotation.y += 0.0015;
