@@ -79,7 +79,8 @@ loader.load('textures/iss/scene.gltf', (gltf) => {
 	iss.position.set(3.5, 0, 0);
 
 	iss.rotateZ(1.4);
-	// iss.rotateX(2.5);
+	// need to figure out this rotation to the space station's panels are facing the sun
+	// iss.rotateX(1.4);
 
 	iss.castShadow = true;
 	iss.receiveShadow = true;
@@ -136,13 +137,13 @@ function animate() {
 	earthClouds.rotation.y += 0.0015;
 
 	// moon
-	moonOrbitCenter.rotation.y += 0.005;
+	moonOrbitCenter.rotation.y += 0.003;
 	moonOrbitCenter.add(moon);
 	moon.rotation.y += 0.000000000015;
 
 	// iss and orbit
 	issOrbitCenter.add(iss);
-	issOrbitCenter.rotation.y += 0.001;
+	issOrbitCenter.rotation.y += 0.005;
 
 	// controls.update();
 

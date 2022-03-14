@@ -44,8 +44,6 @@ html {
 	z-index: 20;
 }
 
-/* TODO: need to add hover effect on menu items */
-/* TODO: navmenu items need to be highlighted (become acvive) based on scroll position */
 .nav-menu {
 	display: flex;
 	align-items: center;
@@ -83,6 +81,7 @@ section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	
 	padding-top: 6.5rem;
 	height: 100vh;
 	width: 50rem;
