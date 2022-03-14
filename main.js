@@ -29,8 +29,6 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(wInner, wHeight);
 camera.position.setZ(40);
-// camera.lookAt(moon.position)
-
 
 // Earth
 const earthTexture = new THREE.TextureLoader().load(
@@ -45,7 +43,7 @@ const earthMaterial = new THREE.MeshLambertMaterial({
 const earth = new THREE.Mesh(earthGeometry, earthMaterial);
 earth.castShadow = true;
 earth.receiveShadow = true;
-earth.position.set(0, 2, 0);
+earth.position.set(0, 3.5, 0);
 scene.add(earth);
 
 // Earth clouds sphere
@@ -63,13 +61,13 @@ const earthCloudsMaterial = new THREE.MeshLambertMaterial({
 const earthClouds = new THREE.Mesh(earthCloudsGeometry, earthCloudsMaterial);
 earthClouds.castShadow = true;
 earthClouds.receiveShadow = true;
-earthClouds.position.set(0, 2, 0);
+earthClouds.position.set(0, 3.5, 0);
 
 scene.add(earthClouds);
 
 // Object to control moon orbit
 const moonOrbitCenter = new THREE.Object3D();
-moonOrbitCenter.position.set(0, 2, 0);
+moonOrbitCenter.position.set(0, 3.5, 0);
 scene.add(moonOrbitCenter);
 
 // add ISS gltf model to the scene
@@ -92,7 +90,7 @@ loader.load('textures/iss/scene.gltf', (gltf) => {
 
 const issOrbitCenter = new THREE.Object3D();
 issOrbitCenter.rotateX(-0.7);
-issOrbitCenter.position.set(0, 2, 0);
+issOrbitCenter.position.set(0, 3.5, 0);
 
 scene.add(issOrbitCenter);
 
@@ -133,7 +131,6 @@ scene.add(sunLight);
 function animate() {
 	requestAnimationFrame(animate);
 
-	
 	// earth
 	earth.rotation.y += 0.001;
 	earthClouds.rotation.y += 0.0015;
