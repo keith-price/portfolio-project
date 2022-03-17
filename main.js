@@ -75,12 +75,8 @@ const loader = new GLTFLoader();
 let iss;
 loader.load('textures/iss/scene.gltf', (gltf) => {
 	iss = gltf.scene;
-	iss.scale.set(0.05, 0.05, 0.05);
+	iss.scale.set(0.04, 0.04, 0.04);
 	iss.position.set(3.5, 0, 0);
-
-	iss.rotateY(1.7);
-	// need to figure out this rotation to the space station's panels are facing the sun
-	iss.rotateX(0.5);
 
 	iss.castShadow = true;
 	iss.receiveShadow = true;
@@ -136,17 +132,15 @@ const home = document.getElementById('home');
 const onIss = document.getElementById('on-iss');
 
 rideIss.addEventListener('click', () => {
-	let elements = [home, onIss];
+	const elements = [home, onIss];
 	elements.map((element) => {
 		element.classList.contains('hidden')
 			? element.classList.remove('hidden')
 			: element.classList.add('hidden');
 	});
-	console.log('clicked');
 	iss.add(camera);
 
-	camera.position.set(10, 10, 40)
-
+	camera.position.set(6, 0, 12);
 });
 
 leaveIss.addEventListener('click', () => {
@@ -156,11 +150,9 @@ leaveIss.addEventListener('click', () => {
 			? element.classList.remove('hidden')
 			: element.classList.add('hidden');
 	});
-	console.log('clicked');
 	iss.remove(camera);
-	camera.position.set(0, 0, 40)
+	camera.position.set(0, 0, 40);
 });
-
 
 // animation
 function animate() {

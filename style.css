@@ -92,6 +92,12 @@ main {
 	transition: all 0.3s ease-in-out;
 }
 
+#iss-leave {
+	position: absolute;
+	bottom: 2rem;
+	right: 3rem;
+}
+
 .btn:hover {
 	cursor: pointer;
 	background-color: black;
