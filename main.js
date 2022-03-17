@@ -17,7 +17,7 @@ let wHeight = window.innerHeight;
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(45, wInner / wHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(45, wInner / wHeight, 0.1, 10000);
 
 const renderer = new THREE.WebGLRenderer({
 	canvas: document.querySelector('#bg'),
@@ -35,13 +35,13 @@ const earthTexture = new THREE.TextureLoader().load(
 	'/textures/2k_earth_daymap.jpg'
 );
 
-const earthGeometry = new THREE.SphereGeometry(3, 64, 64);
+const earthGeometry = new THREE.SphereGeometry(3, 128, 128);
 const earthMaterial = new THREE.MeshLambertMaterial({
 	map: earthTexture,
 });
 
 const earth = new THREE.Mesh(earthGeometry, earthMaterial);
-earth.castShadow = true;
+
 earth.receiveShadow = true;
 earth.position.set(0, 3.5, 0);
 scene.add(earth);
@@ -51,7 +51,7 @@ const earthCloudsTexture = new THREE.TextureLoader().load(
 	'textures/2k_earth_clouds.jpg'
 );
 
-const earthCloudsGeometry = new THREE.SphereGeometry(3.04, 64, 64);
+const earthCloudsGeometry = new THREE.SphereGeometry(3.04, 128, 128);
 const earthCloudsMaterial = new THREE.MeshLambertMaterial({
 	map: earthCloudsTexture,
 	transparent: true,
@@ -78,7 +78,6 @@ loader.load('textures/iss/scene.gltf', (gltf) => {
 	iss.scale.set(0.04, 0.04, 0.04);
 	iss.position.set(3.5, 0, 0);
 
-	iss.castShadow = true;
 	iss.receiveShadow = true;
 
 	scene.add(iss);
@@ -102,8 +101,7 @@ const moonMaterial = new THREE.MeshLambertMaterial({
 const moon = new THREE.Mesh(moonGeometry, moonMaterial);
 moon.position.set(10, 0, 0);
 moon.rotateY(3.5);
-moon.castShadow = true;
-moon.receiveShadow = true;
+
 
 scene.add(moon);
 
@@ -111,10 +109,42 @@ const sunLight = new THREE.PointLight(0xffffff, 1.45);
 sunLight.position.set(0, 0, 20);
 sunLight.castShadow = true;
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.05);
+const ambientLight = new THREE.AmbientLight(0xffffff, .05);
 ambientLight.position.set(0, 0, 0);
 
 scene.add(sunLight, ambientLight);
+
+// skybox - universebox
+const skyboxTexture = new THREE.TextureLoader().load(
+	'/textures/8k_stars_milky_way.jpg'
+);
+
+const skyboxGeometry = new THREE.SphereGeometry(100, 64, 64);
+const skyboxMaterial = new THREE.MeshBasicMaterial({
+	side: THREE.DoubleSide,
+	map: skyboxTexture,
+});
+
+const universe = new THREE.Mesh(skyboxGeometry, skyboxMaterial);
+universe.scale.set(-1, 1, 1)
+
+universe.position.set(0, 0, 0);
+scene.add(universe)
+
+// stars
+// function addStar() {
+// 	const starGeometry = new THREE.SphereGeometry(0.25, 24, 25);
+// 	const starMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
+// 	const star = new THREE.Mesh(starGeometry, starMaterial);
+
+// 	const [x, y, z] = Array(3)
+// 		.fill()
+// 		.map(() => THREE.MathUtils.randFloatSpread(1000));
+// 	star.position.set(x, y, z);
+// 	scene.add(star);
+// }
+
+// Array(200).fill().forEach(addStar);
 
 // const lightHelper = new THREE.PointLightHelper(ringLight);
 
@@ -125,6 +155,7 @@ scene.add(sunLight, ambientLight);
 // const controls = new OrbitControls(camera, renderer.domElement);
 
 // ride the iss
+// TODO: When 'riding the iss' all other sections not to be hidden to stop scrolling.
 const rideIss = document.getElementById('iss-ride');
 const leaveIss = document.getElementById('iss-leave');
 
@@ -140,7 +171,7 @@ rideIss.addEventListener('click', () => {
 	});
 	iss.add(camera);
 
-	camera.position.set(6, 0, 12);
+	camera.position.set(6, 0, 20);
 });
 
 leaveIss.addEventListener('click', () => {
@@ -159,17 +190,20 @@ function animate() {
 	requestAnimationFrame(animate);
 
 	// earth
-	earth.rotation.y += 0.001;
-	earthClouds.rotation.y += 0.0015;
+	earth.rotation.y += 0.0005;
+	earthClouds.rotation.y += 0.00019;
 
 	// moon
-	moonOrbitCenter.rotation.y += 0.003;
+	moonOrbitCenter.rotation.y += 0.0008;
 	moonOrbitCenter.add(moon);
-	moon.rotation.y += 0.000000000015;
+	moon.rotation.y += 0.0000000000019;
 
 	// iss and orbit
 	issOrbitCenter.add(iss);
-	issOrbitCenter.rotation.y += 0.005;
+	issOrbitCenter.rotation.y += 0.0009;
+
+	// skybox
+	universe.rotation.y += 0.0001
 
 	// controls.update();
 

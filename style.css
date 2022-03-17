@@ -27,6 +27,7 @@ html {
 	top: 0;
 	left: 0;
 	z-index: -1;
+
 	background: url(/textures/2k_stars_milky_way.jpg) no-repeat center center;
 	background-size: cover;
 }
@@ -85,7 +86,9 @@ main {
 .btn {
 	margin-top: 2rem;
 	padding: 1rem 2rem;
-	color: black;
+	color: #fff;
+	background-color: #000;
+	border: 1px solid #fff;
 	font-size: inherit;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -100,9 +103,8 @@ main {
 
 .btn:hover {
 	cursor: pointer;
-	background-color: black;
-	border: 1px solid #fff;
-	color: #fff;
+	background-color: #fff;
+	color: #000;
 	transform: scale(1.05);
 }
 
