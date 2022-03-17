@@ -78,9 +78,9 @@ loader.load('textures/iss/scene.gltf', (gltf) => {
 	iss.scale.set(0.05, 0.05, 0.05);
 	iss.position.set(3.5, 0, 0);
 
-	iss.rotateZ(1.4);
+	iss.rotateY(1.7);
 	// need to figure out this rotation to the space station's panels are facing the sun
-	// iss.rotateX(1.4);
+	iss.rotateX(0.5);
 
 	iss.castShadow = true;
 	iss.receiveShadow = true;
@@ -90,7 +90,7 @@ loader.load('textures/iss/scene.gltf', (gltf) => {
 });
 
 const issOrbitCenter = new THREE.Object3D();
-issOrbitCenter.rotateX(-0.7);
+// issOrbitCenter.rotateX(-0.7);
 issOrbitCenter.position.set(0, 3.5, 0);
 
 scene.add(issOrbitCenter);
@@ -111,14 +111,14 @@ moon.receiveShadow = true;
 
 scene.add(moon);
 
-const sunLight = new THREE.PointLight(0xffffff, 1.5);
+const sunLight = new THREE.PointLight(0xffffff, 1.45);
 sunLight.position.set(0, 0, 20);
 sunLight.castShadow = true;
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.05);
 ambientLight.position.set(0, 0, 0);
 
-scene.add(sunLight);
+scene.add(sunLight, ambientLight);
 
 // const lightHelper = new THREE.PointLightHelper(ringLight);
 
@@ -127,6 +127,40 @@ scene.add(sunLight);
 // scene.add(lightHelper);
 
 // const controls = new OrbitControls(camera, renderer.domElement);
+
+// ride the iss
+const rideIss = document.getElementById('iss-ride');
+const leaveIss = document.getElementById('iss-leave');
+
+const home = document.getElementById('home');
+const onIss = document.getElementById('on-iss');
+
+rideIss.addEventListener('click', () => {
+	let elements = [home, onIss];
+	elements.map((element) => {
+		element.classList.contains('hidden')
+			? element.classList.remove('hidden')
+			: element.classList.add('hidden');
+	});
+	console.log('clicked');
+	iss.add(camera);
+
+	camera.position.set(10, 10, 40)
+
+});
+
+leaveIss.addEventListener('click', () => {
+	let elements = [home, onIss];
+	elements.map((element) => {
+		element.classList.contains('hidden')
+			? element.classList.remove('hidden')
+			: element.classList.add('hidden');
+	});
+	console.log('clicked');
+	iss.remove(camera);
+	camera.position.set(0, 0, 40)
+});
+
 
 // animation
 function animate() {
