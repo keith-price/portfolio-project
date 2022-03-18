@@ -115,7 +115,7 @@ scene.add(moonOrbitCenter);
 // add ISS gltf model to the scene
 const moonLoader = new GLTFLoader();
 let moon;
-moonLoader.load('public/textures/animated_moon/scene.gltf', (gltf) => {
+moonLoader.load('/textures/animated_moon/scene.gltf', (gltf) => {
 	moon = gltf.scene;
 	moon.scale.set(3.15, 3.15, 3.15);
 	// iss.rotateZ(1.6);
