@@ -8,10 +8,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 // allows navigation with mouse
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-// lighting
-// import { AmbientLight } from 'three';
-// import { PointLight } from 'three';
-
 let wInner = window.innerWidth;
 let wHeight = window.innerHeight;
 
@@ -75,8 +71,9 @@ const loader = new GLTFLoader();
 let iss;
 loader.load('textures/iss/scene.gltf', (gltf) => {
 	iss = gltf.scene;
-	iss.scale.set(0.04, 0.04, 0.04);
-	iss.position.set(3.5, 0, 0);
+	iss.scale.set(0.02, 0.02, 0.02);
+	iss.rotateZ(1.6);
+	iss.position.set(3.2, 0, 0);
 
 	iss.receiveShadow = true;
 
@@ -102,14 +99,13 @@ const moon = new THREE.Mesh(moonGeometry, moonMaterial);
 moon.position.set(10, 0, 0);
 moon.rotateY(3.5);
 
-
 scene.add(moon);
 
 const sunLight = new THREE.PointLight(0xffffff, 1.45);
 sunLight.position.set(0, 0, 20);
 sunLight.castShadow = true;
 
-const ambientLight = new THREE.AmbientLight(0xffffff, .05);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.05);
 ambientLight.position.set(0, 0, 0);
 
 scene.add(sunLight, ambientLight);
@@ -126,63 +122,71 @@ const skyboxMaterial = new THREE.MeshBasicMaterial({
 });
 
 const universe = new THREE.Mesh(skyboxGeometry, skyboxMaterial);
-universe.scale.set(-1, 1, 1)
+universe.scale.set(-1, 1, 1);
 
 universe.position.set(0, 0, 0);
-scene.add(universe)
-
-// stars
-// function addStar() {
-// 	const starGeometry = new THREE.SphereGeometry(0.25, 24, 25);
-// 	const starMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
-// 	const star = new THREE.Mesh(starGeometry, starMaterial);
-
-// 	const [x, y, z] = Array(3)
-// 		.fill()
-// 		.map(() => THREE.MathUtils.randFloatSpread(1000));
-// 	star.position.set(x, y, z);
-// 	scene.add(star);
-// }
-
-// Array(200).fill().forEach(addStar);
-
-// const lightHelper = new THREE.PointLightHelper(ringLight);
-
-// const gridHelper = new THREE.GridHelper(200, 50);
-
-// scene.add(lightHelper);
-
-// const controls = new OrbitControls(camera, renderer.domElement);
+scene.add(universe);
 
 // ride the iss
-// TODO: When 'riding the iss' all other sections not to be hidden to stop scrolling.
 const rideIss = document.getElementById('iss-ride');
 const leaveIss = document.getElementById('iss-leave');
 
-const home = document.getElementById('home');
-const onIss = document.getElementById('on-iss');
+const sections = document.getElementsByTagName('section');
+const sectionsArray = [...sections];
 
 rideIss.addEventListener('click', () => {
-	const elements = [home, onIss];
-	elements.map((element) => {
-		element.classList.contains('hidden')
-			? element.classList.remove('hidden')
-			: element.classList.add('hidden');
+	sectionsArray.map((section) => {
+		if (section.id != 'on-moon') {
+			section.classList.contains('hidden')
+				? section.classList.remove('hidden')
+				: section.classList.add('hidden');
+		}
 	});
 	iss.add(camera);
-
-	camera.position.set(6, 0, 20);
+	camera.position.set(7, 5, 30);
 });
 
 leaveIss.addEventListener('click', () => {
-	let elements = [home, onIss];
-	elements.map((element) => {
-		element.classList.contains('hidden')
-			? element.classList.remove('hidden')
-			: element.classList.add('hidden');
+	sectionsArray.map((section) => {
+		if (section.id != 'on-moon')
+			section.classList.contains('hidden')
+				? section.classList.remove('hidden')
+				: section.classList.add('hidden');
 	});
 	iss.remove(camera);
 	camera.position.set(0, 0, 40);
+});
+
+// stand on the moon
+const standOnMoon = document.getElementById('stand-on-moon');
+const leaveMoon = document.getElementById('moon-leave');
+
+standOnMoon.addEventListener('click', () => {
+	sectionsArray.map((section) => {
+		if (section.id != 'on-iss') {
+			section.classList.contains('hidden')
+				? section.classList.remove('hidden')
+				: section.classList.add('hidden');
+		}
+	});
+	moonOrbitCenter.add(camera);
+	camera.position.set(10, 1.06, 0);
+	camera.lookAt(earth.position);
+});
+
+leaveMoon.addEventListener('click', () => {
+	sectionsArray.map((section) => {
+		if (section.id != 'on-iss') {
+			section.classList.contains('hidden')
+				? section.classList.remove('hidden')
+				: section.classList.add('hidden');
+		}
+	});
+	// camera doesn't rotate back to 0 - maybe an 'orbit-center' for camera to attach to
+
+	moonOrbitCenter.remove(camera);
+	camera.position.set(0, 0, 40);
+	camera.lookAt(0, 0, 0);
 });
 
 // animation
@@ -191,7 +195,7 @@ function animate() {
 
 	// earth
 	earth.rotation.y += 0.0005;
-	earthClouds.rotation.y += 0.00019;
+	earthClouds.rotation.y += 0.0004;
 
 	// moon
 	moonOrbitCenter.rotation.y += 0.0008;
@@ -200,10 +204,10 @@ function animate() {
 
 	// iss and orbit
 	issOrbitCenter.add(iss);
-	issOrbitCenter.rotation.y += 0.0009;
+	issOrbitCenter.rotation.y += 0.002;
 
 	// skybox
-	universe.rotation.y += 0.0001
+	universe.rotation.y += 0.0001;
 
 	// controls.update();
 

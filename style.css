@@ -101,6 +101,12 @@ main {
 	right: 3rem;
 }
 
+#moon-leave {
+	position: absolute;
+	top: 2rem;
+	right: 3rem;
+}
+
 .btn:hover {
 	cursor: pointer;
 	background-color: #fff;
@@ -108,7 +114,7 @@ main {
 	transform: scale(1.05);
 }
 
-section {
+.full {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
