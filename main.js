@@ -139,8 +139,7 @@ issLoader.load('textures/iss/scene.gltf', (gltf) => {
 });
 
 const issOrbitCenter = new THREE.Object3D();
-issOrbitCenter.rotateZ(0.4);
-issOrbitCenter.rotateX(-0.4);
+
 issOrbitCenter.position.set(0, 3.5, 0);
 
 scene.add(issOrbitCenter);
@@ -162,22 +161,6 @@ lunarLoader.load('/textures/apollo_11_command_module_combined/scene.gltf', (gltf
 	// console.log(iss.getWorldPosition());
 });
 
-// add astronaut
-const astronautLoader = new GLTFLoader();
-let astronaut;
-astronautLoader.load('/textures/astronaut/scene.gltf', (gltf) => {
-	astronaut = gltf.scene;
-	astronaut.scale.set(0.04, 0.04, 0.04);
-	// iss.rotateZ(1.6);
-
-	astronaut.position.set(9.85, .983, -.056);
-
-	astronaut.receiveShadow = true;
-	
-
-	scene.add(astronaut);
-	// console.log(iss.getWorldPosition());
-});
 
 // ride the iss
 const rideIss = document.getElementById('iss-ride');
