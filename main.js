@@ -77,6 +77,21 @@ earthClouds.position.set(0, 3.5, 0);
 
 scene.add(earthClouds);
 
+// add earth model
+// const earthLoader = new GLTFLoader();
+// let earth;
+// earthLoader.load('/textures/earth_2.0/scene.gltf', (gltf) => {
+// 	earth = gltf.scene;
+// 	earth.scale.set(.3, .3, .3);
+	
+// 	earth.position.set(0, 3.5, 0);
+
+// 	earth.receiveShadow = true;
+
+// 	scene.add(earth);
+// 	// console.log(iss.getWorldPosition());
+// });
+
 // Object to control moon orbit
 const moonOrbitCenter = new THREE.Object3D();
 moonOrbitCenter.position.set(0, 3.5, 0);
@@ -84,18 +99,33 @@ scene.add(moonOrbitCenter);
 
 
 // Moon
-const moonTexture = new THREE.TextureLoader().load('textures/8k_moon.jpg');
+// const moonTexture = new THREE.TextureLoader().load('textures/8k_moon.jpg');
 
-const moonGeometry = new THREE.SphereGeometry(1, 64, 64);
-const moonMaterial = new THREE.MeshLambertMaterial({
-	map: moonTexture,
+// const moonGeometry = new THREE.SphereGeometry(1, 64, 64);
+// const moonMaterial = new THREE.MeshLambertMaterial({
+// 	map: moonTexture,
+// });
+
+// const moon = new THREE.Mesh(moonGeometry, moonMaterial);
+// moon.position.set(10, 0, 0);
+// moon.rotateY(3.5);
+
+// scene.add(moon);
+
+// add ISS gltf model to the scene
+const moonLoader = new GLTFLoader();
+let moon;
+moonLoader.load('public/textures/animated_moon/scene.gltf', (gltf) => {
+	moon = gltf.scene;
+	moon.scale.set(3.15, 3.15, 3.15);
+	// iss.rotateZ(1.6);
+	moon.position.set(10, 0, 0);
+
+	moon.receiveShadow = true;
+
+	scene.add(moon);
+	// console.log(iss.getWorldPosition());
 });
-
-const moon = new THREE.Mesh(moonGeometry, moonMaterial);
-moon.position.set(10, 0, 0);
-moon.rotateY(3.5);
-
-scene.add(moon);
 
 const sunLight = new THREE.PointLight(0xffffff, 1.45);
 sunLight.position.set(0, 0, 20);
@@ -147,19 +177,19 @@ scene.add(issOrbitCenter);
 // add lunar module
 
 // add ISS gltf model to the scene
-const lunarLoader = new GLTFLoader();
-let lunarModule;
-lunarLoader.load('/textures/apollo_11_command_module_combined/scene.gltf', (gltf) => {
-	lunarModule = gltf.scene;
-	lunarModule.scale.set(0.01, 0.01, 0.01);
-	// iss.rotateZ(1.6);
-	lunarModule.position.set(9.85, .98, .064);
+// const lunarLoader = new GLTFLoader();
+// let lunarModule;
+// lunarLoader.load('/textures/apollo_11_command_module_combined/scene.gltf', (gltf) => {
+// 	lunarModule = gltf.scene;
+// 	lunarModule.scale.set(0.01, 0.01, 0.01);
+// 	// iss.rotateZ(1.6);
+// 	lunarModule.position.set(9.85, .98, .064);
 
-	lunarModule.receiveShadow = true;
+// 	lunarModule.receiveShadow = true;
 
-	scene.add(lunarModule);
-	// console.log(iss.getWorldPosition());
-});
+// 	scene.add(lunarModule);
+// 	// console.log(iss.getWorldPosition());
+// });
 
 
 // ride the iss
@@ -205,7 +235,7 @@ standOnMoon.addEventListener('click', () => {
 		}
 	});
 	moonOrbitCenter.add(camera);
-	camera.position.set(10, 1.047, 0);
+	camera.position.set(9.95, 1.047, 0);
 	camera.lookAt(earth.position);
 });
 
@@ -237,7 +267,7 @@ function animate() {
 
 	// moon
 	moonOrbitCenter.rotation.y += 0.0008;
-	moonOrbitCenter.add(moon, lunarModule);
+	moonOrbitCenter.add(moon);
 	moon.rotation.y += 0.0000000000019;
 
 	// iss and orbit
