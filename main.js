@@ -237,7 +237,7 @@ function animate() {
 
 	// moon
 	moonOrbitCenter.rotation.y += 0.0008;
-	moonOrbitCenter.add(moon, lunarModule, astronaut);
+	moonOrbitCenter.add(moon, lunarModule);
 	moon.rotation.y += 0.0000000000019;
 
 	// iss and orbit
