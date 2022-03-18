@@ -1,0 +1,11 @@
+Model Information:
+* title:	Apollo Lunar Excursion Module
+* source:	https://sketchfab.com/3d-models/apollo-lunar-excursion-module-5376aae0ac484d5f8afdcae0a0d052c7
+* author:	siotech2011 (https://sketchfab.com/siotech2011)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Apollo Lunar Excursion Module" (https://sketchfab.com/3d-models/apollo-lunar-excursion-module-5376aae0ac484d5f8afdcae0a0d052c7) by siotech2011 (https://sketchfab.com/siotech2011) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
