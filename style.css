@@ -27,9 +27,6 @@ html {
 	top: 0;
 	left: 0;
 	z-index: -1;
-
-	background: url(/textures/2k_stars_milky_way.jpg) no-repeat center center;
-	background-size: cover;
 }
 
 #header {
@@ -79,38 +76,69 @@ main {
 	font-size: 1.25rem;
 }
 
+.audio {
+	position: absolute;
+	top: 5rem;
+	right: 1.5rem;
+}
+
 .intro {
 	width: 30rem;
 }
 
 .btn {
-	margin-top: 2rem;
-	padding: 1rem 2rem;
+	margin: 4rem 0;
 	color: #fff;
-	background-color: #000;
+	background-color: rgba(0, 0, 0, 0);
 	border: 1px solid #fff;
 	font-size: inherit;
 	text-transform: uppercase;
-	font-weight: bold;
+	height: 6rem;
+	width: 6rem;
+	border-radius: 50%;
+	text-align: center;
 	transition: all 0.3s ease-in-out;
 }
 
-#iss-leave {
-	position: absolute;
-	bottom: 2rem;
-	right: 3rem;
+.audio-btn {
+	background: url('/images/headphone.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 2rem;
+	position: fixed;
+	right: 2rem;
+	top: 7rem;
+	height: 4rem;
+	width: 4rem;
+	background-color: rgba(0, 0, 0, 0);
+
+	border-radius: 50%;
+	transition: all 0.3s ease-in-out;
 }
 
 #moon-leave {
 	position: absolute;
-	top: 2rem;
+	top: 3rem;
 	right: 3rem;
+	border-radius: 50%;
+	height: 6rem;
+	width: 6rem;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0);
+	border: 1px solid #fff;
+	font-size: inherit;
+	text-transform: uppercase;
+	transition: all 0.3s ease-in-out;
+	text-align: center;
 }
 
-.btn:hover {
+.btn:hover,
+.audio-btn:hover,
+#moon-leave:hover {
 	cursor: pointer;
-	background-color: #fff;
-	color: #000;
+
+	background-color: rgba(255, 255, 255, 0.096);
+	/* color: #000; */
 	transform: scale(1.05);
 }
 

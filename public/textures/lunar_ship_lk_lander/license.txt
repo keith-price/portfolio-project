@@ -1,0 +1,11 @@
+Model Information:
+* title:	Lunar Ship LK LANDER
+* source:	https://sketchfab.com/3d-models/lunar-ship-lk-lander-e8de5a44582d41e99fb1ebeed6664e4d
+* author:	leopro (https://sketchfab.com/leopro)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Lunar Ship LK LANDER" (https://sketchfab.com/3d-models/lunar-ship-lk-lander-e8de5a44582d41e99fb1ebeed6664e4d) by leopro (https://sketchfab.com/leopro) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
