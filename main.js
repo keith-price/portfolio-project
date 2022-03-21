@@ -8,12 +8,12 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 // allows navigation with mouse
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-let wInner = window.innerWidth;
+let wWidth = window.innerWidth;
 let wHeight = window.innerHeight;
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(45, wInner / wHeight, 0.1, 10000);
+const camera = new THREE.PerspectiveCamera(50, wWidth / wHeight, 0.1, 10000);
 
 const renderer = new THREE.WebGLRenderer({
 	canvas: document.querySelector('#bg'),
@@ -23,7 +23,7 @@ const renderer = new THREE.WebGLRenderer({
 });
 
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(wInner, wHeight);
+renderer.setSize(wWidth, wHeight);
 camera.position.setZ(40);
 
 // renderer.shadowMap.enabled = true;
@@ -135,7 +135,13 @@ lunarLoader.load('/textures/lunar_ship_lk_lander/scene.gltf', (gltf) => {
 	lunarLander.rotateZ(0.237);
 	lunarLander.rotateX(0.065);
 	lunarLander.rotateY(2);
-	lunarLander.position.set(14.75, 0.976, 0.06);
+	if (wWidth < 700) {
+		lunarLander.position.set(14.75, 0.976, 0);
+	} else {
+		lunarLander.position.set(14.75, 0.976, 0.06);
+	}
+	// lunarLander.position.set(14.75, 0.976, 0.06);
+
 	scene.add(lunarLander);
 	moonOrbitCenter.add(lunarLander);
 	// lunarLander.castShadow = true;
@@ -241,10 +247,15 @@ animate();
 
 // function that dynamically sets on window resize
 const handleWindowResize = () => {
-	wInner = window.innerWidth;
+	wWidth = window.innerWidth;
 	wHeight = window.innerHeight;
-	camera.aspect = wInner / wHeight;
+	camera.aspect = wWidth / wHeight;
 	camera.updateProjectionMatrix();
+	if (wWidth < 700) {
+		lunarLander.position.set(14.75, 0.976, 0);
+	} else {
+		lunarLander.position.set(14.75, 0.976, 0.06);
+	}
 
 	renderer.setSize(window.innerWidth, window.innerHeight);
 };
