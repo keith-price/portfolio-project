@@ -242,7 +242,7 @@ footer {
 
 	.full {
 		padding: 6rem 0 0 0;
-		height: 100vh;
+		height: auto;
 		width: 100vw;
 	}
 
@@ -258,5 +258,9 @@ footer {
 		right: 1rem;
 		height: 5rem;
 		width: 5rem;
+	}
+
+	.spacer {
+		height: 19rem;
 	}
 }
