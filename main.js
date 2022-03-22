@@ -133,7 +133,6 @@ if (wWidth < 700) {
 }
 scene.add(issOrbitCenter);
 
-
 // add ISS gltf model to the scene
 const issLoader = new GLTFLoader();
 let iss;
@@ -273,16 +272,17 @@ const handleWindowResize = () => {
 	wHeight = window.innerHeight;
 	camera.aspect = wWidth / wHeight;
 	camera.updateProjectionMatrix();
+	console.log(wWidth);
 	if (wWidth < 700) {
 		earth.position.set(0, 1.75, 0);
-		earthNight.position.set(0, 1.75, 0)
+		earthNight.position.set(0, 1.75, 0);
 		earthClouds.position.set(0, 1.75, 0);
 		moonOrbitCenter.position.set(0, 1.75, 0);
 		issOrbitCenter.position.set(0, 1.75, 0);
 		lunarLander.position.set(14.75, 0.976, 0);
 	} else {
 		earth.position.set(0, 3.5, 0);
-		earthNight.position.set(0, 3.5, 0)
+		earthNight.position.set(0, 3.5, 0);
 		earthClouds.position.set(0, 3.5, 0);
 		moonOrbitCenter.position.set(0, 3.5, 0);
 		issOrbitCenter.position.set(0, 3.5, 0);

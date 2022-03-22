@@ -8,7 +8,7 @@
 	padding: 0;
 	border: 0;
 	box-sizing: border-box;
-	/* font-family: 'Righteous', cursive; */
+	font-family: 'Righteous', cursive;
 	font-family: 'Share Tech Mono', monospace;
 	overflow-x: hidden;
 	color: #ffffff;
@@ -19,7 +19,6 @@ html {
 }
 
 #bg {
-	/* this is not correct, need to check how to make it fully reposnsive */
 	width: 100vw;
 	height: 100vh;
 	display: block;
@@ -107,7 +106,6 @@ main {
 	height: 4rem;
 	width: 4rem;
 	background-color: rgba(0, 0, 0, 0);
-
 	border-radius: 50%;
 	transition: all 0.3s ease-in-out;
 }
@@ -146,9 +144,7 @@ main {
 .audio-btn:hover,
 #moon-leave:hover {
 	cursor: pointer;
-
 	background-color: rgba(255, 255, 255, 0.096);
-	/* color: #000; */
 	transform: scale(1.05);
 }
 
@@ -156,9 +152,8 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 	padding-top: 6.5rem;
-	height: 100vh;
+	height: 100%;
 	width: 50rem;
 	margin: 0 auto;
 }
@@ -177,10 +172,6 @@ main {
 	text-align: center;
 }
 
-/* .about-description {
-
-} */
-
 .apod-container {
 	width: 50rem;
 	height: 30rem;
@@ -195,26 +186,111 @@ main {
 	font-size: 1rem;
 }
 
-
+.about-description {
+	font-size: 1rem;
+}
 
 footer {
+	margin-top: 20rem;
 	display: flex;
+	flex-direction: column;
 	width: 100vw;
 	justify-content: center;
 	align-items: center;
 }
 
-#back-to-top {
-	font-size: 1.5rem;
-	margin: 5rem 0;
-	width: 5rem;
-	height: 5rem;
-	border-radius: 50%;
+.footer-link-container {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
 }
 
-#back-to-top a {
-	color: black;
+.footer-link {
+	margin: 1rem 0.5rem;
+	border: 1px solid #fff;
+	height: 3rem;
+	width: 3rem;
+	border-radius: 50%;
+	transition: all 0.3s ease-in-out;
+}
+
+.footer-link:hover {
+	transform: scale(1.05);
+}
+
+#email-link {
+	margin-top: 4rem;
 	text-decoration: none;
+}
+
+#email-link:hover {
+	text-decoration: underline;
+}
+
+#linkedin {
+	background-image: url('/images/linkedin.png');
+	background-position: center;
+	background-size: 3rem;
+}
+
+#github {
+	background-image: url('/images/github.png');
+	background-position: center;
+	background-size: 3rem;
+}
+
+#back-to-top {
+	margin: 5rem;
+	height: 6rem;
+	width: 6rem;
+	background-image: url('/public/images/rocket.png');
+	background-position: center;
+	background-size: contain;
+	background-color: transparent;
+	transform: rotateZ(-45deg);
+}
+
+#back-to-top:hover {
+	animation: shake 0.5s ease-in-out;
+	animation-iteration-count: infinite;
+}
+
+
+@keyframes shake {
+	0% {
+		transform: translate(1px, 1px) rotate(-45deg);
+	}
+	10% {
+		transform: translate(-1px, -2px) rotate(-46deg);
+	}
+	20% {
+		transform: translate(-3px, 0px) rotate(-44deg);
+	}
+	30% {
+		transform: translate(3px, 2px) rotate(-44deg);
+	}
+	40% {
+		transform: translate(1px, -1px) rotate(-44deg);
+	}
+	50% {
+		transform: translate(-1px, 2px) rotate(-46deg);
+	}
+	60% {
+		transform: translate(-3px, 1px) rotate(-45deg);
+	}
+	70% {
+		transform: translate(3px, 1px) rotate(-46deg);
+	}
+	80% {
+		transform: translate(-1px, -1px) rotate(-44deg);
+	}
+	90% {
+		transform: translate(1px, 2px) rotate(-45deg);
+	}
+	100% {
+		transform: translate(1px, -2px) rotate(-46deg);
+	}
 }
 
 @media only screen and (max-width: 800px) {
@@ -238,7 +314,7 @@ footer {
 
 	.intro {
 		font-size: 1rem;
-		width: 90%;
+		width: 21rem;
 	}
 
 	.full {
@@ -249,7 +325,6 @@ footer {
 
 	.btn {
 		margin: 4rem 0;
-
 		height: 5rem;
 		width: 5rem;
 	}
@@ -271,11 +346,9 @@ footer {
 		margin: 0 auto 1rem auto;
 	}
 
-	
-.apod-app-description,
-.about-description {
-width: 80%;
-font-size: 1rem;
-}
-
+	.apod-app-description,
+	.about-description {
+		width: 80%;
+		font-size: 1rem;
+	}
 }
