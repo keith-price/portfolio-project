@@ -292,9 +292,3 @@ const handleWindowResize = () => {
 	renderer.setSize(window.innerWidth, window.innerHeight);
 };
 window.addEventListener('resize', handleWindowResize, true);
-
-
-
-
-
-

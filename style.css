@@ -411,6 +411,10 @@ footer {
 	}
 
 	#back-to-top {
+		-webkit-animation: shake 0.5s ease-in-out;
+	animation: shake 0.5s ease-in-out;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
 		margin: 3.5rem 0 2rem 0;
 	}
 }
