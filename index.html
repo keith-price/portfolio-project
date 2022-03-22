@@ -62,22 +62,29 @@
 							alt="image showing home page of a website"
 					/></a>
 				</div>
-				<!-- TODO: replace placeholder -->
+				<ul id="project-links">
+					<li class="apod-site-link">
+						<a href="https://apod-react-app.netlify.app/" target="_blank"
+							>Live app</a
+						>
+					</li>
+					<li class="apod-repo-link">
+						<a href="https://github.com/keith-price/portfolio-project" target="_blank"
+							>Repository</a
+						>
+					</li>
+				</ul>
 				<p class="apod-app-description">
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo eveniet
-					rerum consequuntur nulla porro quo cupiditate laborum excepturi
-					dolorem. Suscipit, minima unde at et cum aperiam dignissimos dolor.
-					Libero, assumenda. Praesentium provident corporis ipsam perspiciatis
-					libero sequi voluptates est labore ducimus ullam consectetur,
-					laudantium aliquam ipsum commodi! Magni labore error, maiores rem,
-					consectetur, nobis molestiae repellat at aut distinctio blanditiis.
-					Maxime magni fuga, fugit similique voluptas tenetur. Aut aperiam
-					ducimus minus, corrupti dolor labore aliquam delectus commodi pariatur
-					est accusantium consectetur esse doloribus vel nemo, praesentium
-					maiores. Dolor, natus quidem. Labore, aut quaerat rem pariatur
-					obcaecati laboriosam voluptatem ipsam. Officiis, ad vero est numquam
-					quam ab consequuntur blanditiis esse quaerat maiores amet animi sit
-					quae beatae fugit culpa ipsum minima.
+					I created this React app to fetch data from NASA's APOD API. Each
+					daily image is displayed with its title and description. It seemed a
+					shame to then lose this incredible image when it is replaced the
+					following day. So I decided to create an archive page where users can
+					browse previous APOD images and their related information. After
+					fetching the data each day, the daily image along with its title and
+					description are written to a database collection. That collection can
+					be viewed as image cards on the archive page. Selecting an image then
+					opens up the archive detail page with the image displayed in full
+					along with its title and description.
 				</p>
 			</section>
 			<section id="about" class="full">

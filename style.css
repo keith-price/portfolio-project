@@ -174,8 +174,20 @@ main {
 
 .apod-container {
 	width: 50rem;
-	height: 30rem;
 	margin: 0 auto;
+}
+
+#project-links {
+	width: 50rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	margin: 0.5rem 0 1rem 0;
+	font-size: 0.9rem;
+}
+
+#project-links li a {
+	text-decoration: none;
 }
 
 #apod-app-image {
@@ -252,10 +264,47 @@ footer {
 }
 
 #back-to-top:hover {
+	-webkit-animation: shake 0.5s ease-in-out;
 	animation: shake 0.5s ease-in-out;
+	-webkit-animation-iteration-count: infinite;
 	animation-iteration-count: infinite;
 }
 
+@-webkit-keyframes shake {
+	0% {
+		transform: translate(1px, 1px) rotate(-45deg);
+	}
+	10% {
+		transform: translate(-1px, -2px) rotate(-46deg);
+	}
+	20% {
+		transform: translate(-3px, 0px) rotate(-44deg);
+	}
+	30% {
+		transform: translate(3px, 2px) rotate(-44deg);
+	}
+	40% {
+		transform: translate(1px, -1px) rotate(-44deg);
+	}
+	50% {
+		transform: translate(-1px, 2px) rotate(-46deg);
+	}
+	60% {
+		transform: translate(-3px, 1px) rotate(-45deg);
+	}
+	70% {
+		transform: translate(3px, 1px) rotate(-46deg);
+	}
+	80% {
+		transform: translate(-1px, -1px) rotate(-44deg);
+	}
+	90% {
+		transform: translate(1px, 2px) rotate(-45deg);
+	}
+	100% {
+		transform: translate(1px, -2px) rotate(-46deg);
+	}
+}
 
 @keyframes shake {
 	0% {
