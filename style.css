@@ -345,7 +345,7 @@ footer {
 @media only screen and (max-width: 800px) {
 	.audio-btn {
 		position: absolute;
-		top: 3.5rem;
+		top: 3.65rem;
 		right: 0;
 		background-size: 1.25rem;
 		height: 2rem;
@@ -408,5 +408,9 @@ footer {
 		gap: 0.3rem;
 		margin: 0.5rem 0 1rem 0;
 		font-size: 0.9rem; */
+	}
+
+	#back-to-top {
+		margin: 3.5rem 0 2rem 0;
 	}
 }
