@@ -25,6 +25,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(wWidth, wHeight);
 camera.position.setZ(40);
+// Instead of all the conditional logic to move the Earth and Mooon with screen height, maybe just use camera.lookAt()? 
 
 // renderer.shadowMap.enabled = true;
 // renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -76,7 +77,7 @@ const earthCloudsTexture = new THREE.TextureLoader().load(
 	'textures/2k_earth_clouds.jpg'
 );
 
-const earthCloudsGeometry = new THREE.SphereGeometry(3.06, 128, 128);
+const earthCloudsGeometry = new THREE.SphereGeometry(3.08, 128, 128);
 const earthCloudsMaterial = new THREE.MeshLambertMaterial({
 	map: earthCloudsTexture,
 	transparent: true,
