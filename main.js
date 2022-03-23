@@ -52,11 +52,7 @@ const earthMaterial = new THREE.MeshLambertMaterial({
 const earth = new THREE.Mesh(earthGeometry, earthMaterial);
 // earth.castShadow = true;
 // earth.receiveShadow = true;
-if (wWidth < 700) {
-	earth.position.set(0, 1.75, 0);
-} else {
-	earth.position.set(0, 3.5, 0);
-}
+wHeight > 800 ? earth.position.set(0, 3.5, 0) : earth.position.set(0, 0, 0);
 scene.add(earth);
 
 // earth lights
@@ -70,11 +66,9 @@ const earthLightsMaterial = new THREE.MeshBasicMaterial({
 });
 
 const earthNight = new THREE.Mesh(earthLightsGeometry, earthLightsMaterial);
-if (wWidth < 700) {
-	earthNight.position.set(0, 1.75, 0);
-} else {
-	earthNight.position.set(0, 3.5, 0);
-}
+wHeight > 800
+	? earthNight.position.set(0, 3.5, 0)
+	: earth.position.set(0, 0, 0);
 scene.add(earthNight);
 
 // Earth clouds sphere
@@ -92,11 +86,9 @@ const earthCloudsMaterial = new THREE.MeshLambertMaterial({
 const earthClouds = new THREE.Mesh(earthCloudsGeometry, earthCloudsMaterial);
 // earthClouds.castShadow = true;
 // earthClouds.receiveShadow = true;
-if (wWidth < 700) {
-	earthClouds.position.set(0, 1.75, 0);
-} else {
-	earthClouds.position.set(0, 3.5, 0);
-}
+wHeight > 800
+	? earthClouds.position.set(0, 3.5, 0)
+	: earth.position.set(0, 0, 0);
 scene.add(earthClouds);
 
 // Moon
@@ -110,27 +102,23 @@ const moon = new THREE.Mesh(moonGeometry, moonMaterial);
 // moon.castShadow = true;
 // moon.receiveShadow = true;
 
-moon.position.set(15, 0, 0);
+moon.position.set(-15, 0, 0);
 moon.rotateY(3.5);
 scene.add(moon);
 
 // Object to control moon orbit
 const moonOrbitCenter = new THREE.Object3D();
-if (wWidth < 700) {
-	moonOrbitCenter.position.set(0, 1.75, 0);
-} else {
-	moonOrbitCenter.position.set(0, 3.5, 0);
-}
+wHeight > 800
+	? moonOrbitCenter.position.set(0, 3.5, 0)
+	: earth.position.set(0, 0, 0);
 scene.add(moonOrbitCenter);
 moonOrbitCenter.add(moon);
 
 // iss orbit center
 const issOrbitCenter = new THREE.Object3D();
-if (wWidth < 700) {
-	issOrbitCenter.position.set(0, 1.75, 0);
-} else {
-	issOrbitCenter.position.set(0, 3.5, 0);
-}
+wHeight > 800
+	? issOrbitCenter.position.set(0, 3.5, 0)
+	: earth.position.set(0, 0, 0);
 scene.add(issOrbitCenter);
 
 // add ISS gltf model to the scene
@@ -153,14 +141,12 @@ let lunarLander;
 lunarLoader.load('/textures/lunar_ship_lk_lander/scene.gltf', (gltf) => {
 	lunarLander = gltf.scene;
 	lunarLander.scale.set(0.01, 0.01, 0.01);
-	lunarLander.rotateZ(0.237);
-	lunarLander.rotateX(0.065);
-	lunarLander.rotateY(2);
-	if (wWidth < 700) {
-		lunarLander.position.set(14.75, 0.976, 0);
-	} else {
-		lunarLander.position.set(14.75, 0.976, 0.06);
-	}
+	lunarLander.rotateZ(-0.237);
+	lunarLander.rotateX(-0.065);
+	lunarLander.rotateY(-2);
+
+	lunarLander.position.set(-14.75, 0.976, -0.06);
+
 	// lunarLander.position.set(14.75, 0.976, 0.06);
 
 	scene.add(lunarLander);
@@ -222,7 +208,7 @@ standOnMoon.addEventListener('click', () => {
 	});
 
 	moonOrbitCenter.add(camera);
-	camera.position.set(14.95, 1.047, 0);
+	camera.position.set(-14.95, 1.047, 0);
 	camera.lookAt(earth.position);
 });
 
@@ -272,21 +258,26 @@ const handleWindowResize = () => {
 	wHeight = window.innerHeight;
 	camera.aspect = wWidth / wHeight;
 	camera.updateProjectionMatrix();
-	console.log(wWidth);
+	console.log(wHeight);
+	// moves the lunar lander to a central position in order to be seen on narrower screens
 	if (wWidth < 700) {
-		earth.position.set(0, 1.75, 0);
-		earthNight.position.set(0, 1.75, 0);
-		earthClouds.position.set(0, 1.75, 0);
-		moonOrbitCenter.position.set(0, 1.75, 0);
-		issOrbitCenter.position.set(0, 1.75, 0);
-		lunarLander.position.set(14.75, 0.976, 0);
+		lunarLander.position.set(-14.75, 0.976, 0);
 	} else {
+		lunarLander.position.set(-14.75, 0.976, -0.06);
+	}
+
+	if (wHeight > 800) {
 		earth.position.set(0, 3.5, 0);
-		earthNight.position.set(0, 3.5, 0);
 		earthClouds.position.set(0, 3.5, 0);
+		earthNight.position.set(0, 3.5, 0);
 		moonOrbitCenter.position.set(0, 3.5, 0);
 		issOrbitCenter.position.set(0, 3.5, 0);
-		lunarLander.position.set(14.75, 0.976, 0.06);
+	} else {
+		earth.position.set(0, 0, 0);
+		earthClouds.position.set(0, 0, 0);
+		earthNight.position.set(0, 0, 0);
+		moonOrbitCenter.position.set(0, 0, 0);
+		issOrbitCenter.position.set(0, 0, 0);
 	}
 
 	renderer.setSize(window.innerWidth, window.innerHeight);
