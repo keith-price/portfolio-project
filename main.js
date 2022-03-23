@@ -232,7 +232,7 @@ function animate() {
 
 	// earth
 	earth.rotation.y += 0.0005;
-	earthClouds.rotation.y += 0.00049;
+	earthClouds.rotation.y += 0.0005;
 	earthNight.rotation.y += 0.0005;
 
 	// skybox
