@@ -43,7 +43,7 @@ const earthTexture = new THREE.TextureLoader().load(
 	'/textures/2k_earth_daymap.jpg'
 );
 
-const earthGeometry = new THREE.SphereGeometry(3, 128, 128);
+const earthGeometry = new THREE.SphereGeometry(3, 64, 64);
 const earthMaterial = new THREE.MeshLambertMaterial({
 	transparent: true,
 	opacity: 0.5,
@@ -61,7 +61,7 @@ const earthLightsTexture = new THREE.TextureLoader().load(
 	'/textures/2k_earth_nightmap.jpg'
 );
 
-const earthLightsGeometry = new THREE.SphereGeometry(3, 128, 128);
+const earthLightsGeometry = new THREE.SphereGeometry(3, 64, 64);
 const earthLightsMaterial = new THREE.MeshBasicMaterial({
 	map: earthLightsTexture,
 });
@@ -77,7 +77,7 @@ const earthCloudsTexture = new THREE.TextureLoader().load(
 	'textures/2k_earth_clouds.jpg'
 );
 
-const earthCloudsGeometry = new THREE.SphereGeometry(3.04, 128, 128);
+const earthCloudsGeometry = new THREE.SphereGeometry(3.06, 64, 64);
 const earthCloudsMaterial = new THREE.MeshLambertMaterial({
 	map: earthCloudsTexture,
 	transparent: true,
