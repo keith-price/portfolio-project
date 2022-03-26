@@ -18,7 +18,7 @@ const camera = new THREE.PerspectiveCamera(50, wWidth / wHeight, 0.1, 10000);
 const renderer = new THREE.WebGLRenderer({
 	canvas: document.querySelector('#bg'),
 	// allows transparency
-	alpha: true,
+	// alpha: true,
 	antialias: true,
 });
 
@@ -27,15 +27,13 @@ renderer.setSize(wWidth, wHeight);
 camera.position.setZ(40);
 // Instead of all the conditional logic to move the Earth and Mooon with screen height, maybe just use camera.lookAt()?
 
-// renderer.shadowMap.enabled = true;
-// renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-const sunLight = new THREE.DirectionalLight(0xffffff, 1.6);
-sunLight.position.set(0, 0, 20);
-// sunLight.castShadow = true;
+const sunLight = new THREE.DirectionalLight(0xffffff, 1.9);
+sunLight.position.set(0, 0, 40);
+sunLight.castShadow = true;
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
 ambientLight.position.set(0, 0, 0);
+
 scene.add(sunLight, ambientLight);
 
 // Earth
@@ -53,7 +51,7 @@ const earthMaterial = new THREE.MeshLambertMaterial({
 const earth = new THREE.Mesh(earthGeometry, earthMaterial);
 // earth.castShadow = true;
 // earth.receiveShadow = true;
-wHeight > 800 ? earth.position.set(0, 3.5, 0) : earth.position.set(0, 0, 0);
+wHeight > 800 ? earth.position.set(0, 0, 0) : earth.position.set(0, 0, 0);
 scene.add(earth);
 
 // earth lights
@@ -67,9 +65,7 @@ const earthLightsMaterial = new THREE.MeshBasicMaterial({
 });
 
 const earthNight = new THREE.Mesh(earthLightsGeometry, earthLightsMaterial);
-wHeight > 800
-	? earthNight.position.set(0, 3.5, 0)
-	: earth.position.set(0, 0, 0);
+wHeight > 800 ? earthNight.position.set(0, 0, 0) : earth.position.set(0, 0, 0);
 scene.add(earthNight);
 
 // Earth clouds sphere
@@ -87,10 +83,27 @@ const earthCloudsMaterial = new THREE.MeshLambertMaterial({
 const earthClouds = new THREE.Mesh(earthCloudsGeometry, earthCloudsMaterial);
 // earthClouds.castShadow = true;
 // earthClouds.receiveShadow = true;
-wHeight > 800
-	? earthClouds.position.set(0, 3.5, 0)
-	: earth.position.set(0, 0, 0);
+wHeight > 800 ? earthClouds.position.set(0, 0, 0) : earth.position.set(0, 0, 0);
 scene.add(earthClouds);
+
+// const earthOrbitCenter = new THREE.Object3D();
+
+// earthOrbitCenter.position.set(0, 3.5, 0);
+
+// scene.add(earthOrbitCenter);
+
+// earth model - need better model
+// const earthLoader = new GLTFLoader();
+// let earth;
+// earthLoader.load('/textures/earth/scene.gltf', (gltf) => {
+// 	earth = gltf.scene;
+// 	earth.scale.set(3, 3, 3);
+// 	earth.position.set(0, 0, 0);
+// 	scene.add(earth);
+// 	earthOrbitCenter.add(earth);
+// 	// earth.castShadow = true
+// 	// earth.receiveShadow = true
+// });
 
 // Moon
 const moonTexture = new THREE.TextureLoader().load('textures/8k_moon.jpg');
@@ -100,8 +113,8 @@ const moonMaterial = new THREE.MeshLambertMaterial({
 });
 
 const moon = new THREE.Mesh(moonGeometry, moonMaterial);
-// moon.castShadow = true;
-// moon.receiveShadow = true;
+moon.castShadow = true;
+moon.receiveShadow = true;
 
 moon.position.set(-15, 0, 0);
 moon.rotateY(3.5);
@@ -109,17 +122,15 @@ scene.add(moon);
 
 // Object to control moon orbit
 const moonOrbitCenter = new THREE.Object3D();
-wHeight > 800
-	? moonOrbitCenter.position.set(0, 3.5, 0)
-	: earth.position.set(0, 0, 0);
+moonOrbitCenter.position.set(0, 0, 0);
 scene.add(moonOrbitCenter);
 moonOrbitCenter.add(moon);
 
 // iss orbit center
 const issOrbitCenter = new THREE.Object3D();
-wHeight > 800
-	? issOrbitCenter.position.set(0, 3.5, 0)
-	: earth.position.set(0, 0, 0);
+
+issOrbitCenter.position.set(0, 0, 0);
+
 scene.add(issOrbitCenter);
 
 // add ISS gltf model to the scene
@@ -129,7 +140,7 @@ issLoader.load('textures/iss/scene.gltf', (gltf) => {
 	iss = gltf.scene;
 	iss.scale.set(0.02, 0.02, 0.02);
 	iss.rotateZ(1.6);
-	iss.position.set(3.2, 0, 0);
+	iss.position.set(3.5, 0, 0);
 	scene.add(iss);
 	issOrbitCenter.add(iss);
 	// iss.castShadow = true;
@@ -149,7 +160,6 @@ lunarLoader.load('/textures/lunar_ship_lk_lander/scene.gltf', (gltf) => {
 	lunarLander.position.set(-14.75, 0.976, -0.06);
 
 	// lunarLander.position.set(14.75, 0.976, 0.06);
-
 	scene.add(lunarLander);
 	moonOrbitCenter.add(lunarLander);
 	// lunarLander.castShadow = true;
@@ -228,10 +238,12 @@ leaveMoon.addEventListener('click', () => {
 // const controls = new OrbitControls(camera, renderer.domElement);
 
 // animation
+
 function animate() {
 	requestAnimationFrame(animate);
 
 	// earth
+	// earthOrbitCenter.rotation.y += 0.0005;
 	earth.rotation.y += 0.0005;
 	earthClouds.rotation.y += 0.0005;
 	earthNight.rotation.y += 0.0005;
@@ -259,26 +271,12 @@ const handleWindowResize = () => {
 	wHeight = window.innerHeight;
 	camera.aspect = wWidth / wHeight;
 	camera.updateProjectionMatrix();
-	console.log(wHeight);
+
 	// moves the lunar lander to a central position in order to be seen on narrower screens
 	if (wWidth < 700) {
 		lunarLander.position.set(-14.75, 0.976, 0);
 	} else {
 		lunarLander.position.set(-14.75, 0.976, -0.06);
-	}
-
-	if (wHeight > 800) {
-		earth.position.set(0, 3.5, 0);
-		earthClouds.position.set(0, 3.5, 0);
-		earthNight.position.set(0, 3.5, 0);
-		moonOrbitCenter.position.set(0, 3.5, 0);
-		issOrbitCenter.position.set(0, 3.5, 0);
-	} else {
-		earth.position.set(0, 0, 0);
-		earthClouds.position.set(0, 0, 0);
-		earthNight.position.set(0, 0, 0);
-		moonOrbitCenter.position.set(0, 0, 0);
-		issOrbitCenter.position.set(0, 0, 0);
 	}
 
 	renderer.setSize(window.innerWidth, window.innerHeight);

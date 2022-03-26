@@ -68,15 +68,34 @@ html {
 
 p {
 	text-align: justify;
-	background: rgba(0, 0, 0, 0.055);
-	backdrop-filter: blur(5px);
-	-webkit-backdrop-filter: blur(5px);
 }
+	
 
 main {
 	width: 100vw;
 	font-size: 1.25rem;
 	line-height: 1.4;
+}
+
+.full-top {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 6rem;
+	height: 100vh;
+	width: 50rem;
+	margin: 0 auto;
+}
+
+.full {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 6rem;
+	height: 100%;
+	width: 50rem;
+	margin: 0 auto;
 }
 
 #main-heading {
@@ -96,6 +115,9 @@ main {
 
 .intro {
 	width: 30rem;
+	background: rgba(0, 0, 0, 0.055);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
 }
 
 .audio-btn {
@@ -127,6 +149,14 @@ main {
 	transition: all 0.3s ease-in-out;
 }
 
+.intro-btn-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+
 #moon-leave {
 	position: absolute;
 	top: 3rem;
@@ -151,15 +181,6 @@ main {
 	transform: scale(1.05);
 }
 
-.full {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-top: 6rem;
-	height: 100%;
-	width: 50rem;
-	margin: 0 auto;
-}
 
 .hidden {
 	display: none;
