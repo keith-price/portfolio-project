@@ -396,6 +396,12 @@ footer {
 		width: 21rem;
 	}
 
+	.full-top {
+		padding: 6rem 0 0 0;
+	
+		width: 100vw;
+	}
+
 	.full {
 		padding: 6rem 0 0 0;
 		height: auto;
@@ -403,7 +409,7 @@ footer {
 	}
 
 	.btn {
-		margin: 4rem 0;
+		margin: 2rem 0;
 		height: 5rem;
 		width: 5rem;
 	}
@@ -462,9 +468,5 @@ footer {
 		-webkit-animation-iteration-count: infinite;
 		animation-iteration-count: infinite;
 		margin: 3.5rem 0 2rem 0;
-	}
-
-	.spacer {
-		height: 18rem;
 	}
 }
