@@ -1,145 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- TODO: Need to research what should go in the meta -->
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Keith Price Portfolio</title>
-	</head>
-	<body>
-		<canvas id="bg"></canvas>
-		<section>
-			<header id="header">
-				<ul class="nav-menu">
-					<li class="nav-item"><a href="#home">Home</a></li>
-					<li class="nav-item"><a href="#projects">Projects</a></li>
-					<li class="nav-item"><a href="#about">About</a></li>
-					<!-- not sure whether to link to the resume or have it as part of the site -->
-					<li class="nav-item">
-						<a href="https://www.cakeresume.com/keith-price" target="_blank"
-							>Resume</a
-						>
-					</li>
-				</ul>
-			</header>
-		</section>
 
-		<main>
-			<button type="button" id="play-btn" class="audio-btn">
-				<audio id="site-audio" src="/audio/portfolio-audio.mp3" loop></audio>
-			</button>
-			<section id="home" class="full-top">
-				<div class="heading-container">
-					<h1 id="main-heading">KEITH PRICE</h1>
-					<p id="sub-heading">WEB DEVELOPER</p>
-				</div>
+<head>
+	<!-- TODO: Need to research what should go in the meta -->
+	<meta charset="UTF-8" />
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+	<link rel="manifest" href="favicon/site.webmanifest">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Keith Price Portfolio</title>
+</head>
 
-				<!-- TODO: replace placeholder -->
-				<!-- <div class="spacer"></div> -->
-				<div class="intro-btn-container">
-					<p class="intro">
-						The realization that you can turn code into experiences is an
-						exciting one. And with creativity those experiences can beautiful
-						and meaningful.
-					</p>
-					<!-- <p class="intro-iss">Fancy a ride on the space station?</p>
+<body>
+	<canvas id="bg"></canvas>
+	<section>
+		<header id="header">
+			<ul class="nav-menu">
+				<li class="nav-item"><a href="#home">Home</a></li>
+				<li class="nav-item"><a href="#projects">Projects</a></li>
+				<li class="nav-item"><a href="#about">About</a></li>
+				<!-- not sure whether to link to the resume or have it as part of the site -->
+				<li class="nav-item">
+					<a href="https://www.cakeresume.com/keith-price" target="_blank">Resume</a>
+				</li>
+			</ul>
+		</header>
+	</section>
+
+	<main>
+		<button type="button" id="play-btn" class="audio-btn">
+			<audio id="site-audio" src="/audio/portfolio-audio.mp3" loop></audio>
+		</button>
+		<section id="home" class="full-top">
+			<div class="heading-container">
+				<h1 id="main-heading">KEITH PRICE</h1>
+				<p id="sub-heading">WEB DEVELOPER</p>
+			</div>
+
+			<!-- TODO: replace placeholder -->
+			<!-- <div class="spacer"></div> -->
+			<div class="intro-btn-container">
+				<p class="intro">
+					The realization that you can turn code into experiences is an
+					exciting one. And with creativity those experiences can beautiful
+					and meaningful.
+				</p>
+				<!-- <p class="intro-iss">Fancy a ride on the space station?</p>
 					<button id="iss-ride" class="btn">Ride the ISS</button> -->
-					<!-- <p class="intro-moon">One small step?</p> -->
-					<button id="stand-on-moon" class="btn">Moon?</button>
-				</div>
-			</section>
-			<!-- hidden until on ISS -->
-			<!-- <section id="on-iss" class="full hidden">
+				<!-- <p class="intro-moon">One small step?</p> -->
+				<button id="stand-on-moon" class="btn">Moon?</button>
+			</div>
+		</section>
+		<!-- hidden until on ISS -->
+		<!-- <section id="on-iss" class="full hidden">
 				<button id="iss-leave" class="btn">Leave ISS</button>
 			</section> -->
-			<!-- hidden until on Moon -->
-			<section id="on-moon" class="full hidden">
-				<button id="moon-leave">Leave</button>
-			</section>
-			<section id="projects" class="full">
-				<h2 class="section-heading">Projects</h2>
-				<div class="apod-container">
-					<a href="https://apod-react-app.netlify.app/" target="_blank"
-						><img
-							id="apod-app-image"
-							src="/textures/apod-app-image-alt.png"
-							alt="image showing home page of a website"
-					/></a>
-				</div>
-				<div id="project-links">
-					<div class='project-link'>
-						<p>Live app  &#8594</p>
-						<a
-							id="react-logo"
-							href="https://apod-react-app.netlify.app/"
-							target="_blank"
-						></a>
-					</div>
-
-					<div class='project-link'>
-						<p>Repository &#8594</p>
-						<a
-							id="github-logo"
-							href="https://github.com/keith-price/portfolio-project"
-							target="_blank"
-						>
-						</a>
-					</div>
-				</div>
-				<p class="apod-app-description">
-					This React app was created to fetch data from NASA's APOD API. Each
-					daily image is displayed with its title and description. It seemed a
-					shame to then lose this incredible image when it is replaced the
-					following day. So an archive page was created where users can
-					browse previous APOD images and their related information. After
-					fetching the data each day, the daily image along with its title and
-					description are written to a database collection. That collection can
-					be viewed as image cards on the archive page. Selecting an image then
-					opens up the archive detail page with the image displayed in full
-					along with its title and description.
-				</p>
-			</section>
-			<section id="about" class="full">
-				<h2 class="section-heading">ABOUT</h2>
-				<!-- TODO: replace placeholder -->
-				<p class="about-description">
-					Keith Price makes things with JavaScript. A little
-					while back he dove headfirst into a sea of code, completely unprepared
-					and with no idea what to do. Luckily he survived and swam back to shore with a solid understanding of the fundemantals of programming in JavaScript and the desire to make a career as a
-					developer. After discovering Three.js a whole world of creative
-					possibilities opened up before him and he now spends his time learning how
-					to make 3D interactive web content. Game development is also of great
-					interest to him and he can be found late at night with C# and the Unity game
-					engine trying to bring ideas to life.
-				</p>
-			</section>
-		</main>
-		<section>
-			<footer id="footer">
-				<a id="email-link" href="mailto:keithprice.dev@gmail.com"
-					>keithprice.dev@gmail.com</a
-				>
-				<div class="footer-link-container">
-					<a
-						class="footer-anchor"
-						id="linkedin-anchor"
-						href="https://www.linkedin.com/in/keithprice-dev/"
-						target="_blank"
-					></a>
-					<a
-						class="footer-anchor"
-						id="github-anchor"
-						href="https://github.com/keith-price"
-						target="_blank"
-					></a>
-				</div>
-				<p>© 2022 Keith Price</p>
-
-				<a href="#home"><button id="back-to-top"></button></a>
-			</footer>
+		<!-- hidden until on Moon -->
+		<section id="on-moon" class="full hidden">
+			<button id="moon-leave">Leave</button>
 		</section>
+		<section id="projects" class="full">
+			<h2 class="section-heading">Projects</h2>
+			<div class="apod-container">
+				<a href="https://apod-react-app.netlify.app/" target="_blank"><img id="apod-app-image"
+						src="/textures/apod-app-image-alt.png" alt="image showing home page of a website" /></a>
+			</div>
+			<div id="project-links">
+				<div class='project-link'>
+					<p>Live app &#8594</p>
+					<a id="react-logo" href="https://apod-react-app.netlify.app/" target="_blank"></a>
+				</div>
 
-		<script type="module" src="/main.js"></script>
-	</body>
+				<div class='project-link'>
+					<p>Repository &#8594</p>
+					<a id="github-logo" href="https://github.com/keith-price/portfolio-project" target="_blank">
+					</a>
+				</div>
+			</div>
+			<p class="apod-app-description">
+				This React app was created to fetch data from NASA's APOD API. Each
+				daily image is displayed with its title and description. It seemed a
+				shame to then lose this incredible image when it is replaced the
+				following day. So an archive page was created where users can
+				browse previous APOD images and their related information. After
+				fetching the data each day, the daily image along with its title and
+				description are written to a database collection. That collection can
+				be viewed as image cards on the archive page. Selecting an image then
+				opens up the archive detail page with the image displayed in full
+				along with its title and description.
+			</p>
+		</section>
+		<section id="about" class="full">
+			<h2 class="section-heading">ABOUT</h2>
+			<!-- TODO: replace placeholder -->
+			<p class="about-description">
+				Keith Price makes things with JavaScript. A little
+				while back he dove headfirst into a sea of code, completely unprepared
+				and with no idea what to do. Luckily he survived and swam back to shore with a solid understanding of the
+				fundemantals of programming in JavaScript and the desire to make a career as a
+				developer. After discovering Three.js a whole world of creative
+				possibilities opened up before him and he now spends his time learning how
+				to make 3D interactive web content. Game development is also of great
+				interest to him and he can be found late at night with C# and the Unity game
+				engine trying to bring ideas to life.
+			</p>
+		</section>
+	</main>
+	<section>
+		<footer id="footer">
+			<a id="email-link" href="mailto:keithprice.dev@gmail.com">keithprice.dev@gmail.com</a>
+			<div class="footer-link-container">
+				<a class="footer-anchor" id="linkedin-anchor" href="https://www.linkedin.com/in/keithprice-dev/"
+					target="_blank"></a>
+				<a class="footer-anchor" id="github-anchor" href="https://github.com/keith-price" target="_blank"></a>
+			</div>
+			<p>© 2022 Keith Price</p>
+
+			<a href="#home"><button id="back-to-top"></button></a>
+		</footer>
+	</section>
+
+	<script type="module" src="/main.js"></script>
+</body>
+
 </html>
