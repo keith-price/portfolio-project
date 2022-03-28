@@ -69,7 +69,6 @@ html {
 p {
 	text-align: justify;
 }
-	
 
 main {
 	width: 100vw;
@@ -155,8 +154,6 @@ main {
 	align-items: center;
 }
 
-
-
 #moon-leave {
 	position: absolute;
 	top: 3rem;
@@ -181,13 +178,8 @@ main {
 	transform: scale(1.05);
 }
 
-
 .hidden {
 	display: none;
-}
-
-.spacer {
-	height: 22rem;
 }
 
 .section-heading {
@@ -205,13 +197,38 @@ main {
 	width: 50rem;
 	display: flex;
 	flex-direction: column;
-	gap: 0.3rem;
+	gap: 0.5rem;
 	margin: 0.5rem 0 1rem 0;
 	font-size: 0.9rem;
 }
 
-#project-links li a {
+#project-links a {
+	display: flex;
+	align-items: center;
 	text-decoration: none;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.project-link {
+	display: flex;
+	align-items: center;
+	width: 8rem;
+}
+
+#react-logo {
+	margin-left: .5rem;
+	display: block;
+	background: url('/public/images/react.png') center no-repeat;
+	background-size: 1.5rem;
+}
+
+#github-logo {
+	margin-left: .5rem;
+	border-radius: 50%;
+	border: 1px solid white;
+	background: white url('/public/images/github-logo.png') center no-repeat;
+	background-size: 1.5rem;
 }
 
 #apod-app-image {
@@ -248,7 +265,7 @@ footer {
 	justify-content: center;
 }
 
-.footer-link {
+.footer-anchor {
 	margin: 1rem 0.5rem;
 	border: 1px solid #fff;
 	height: 3rem;
@@ -257,7 +274,19 @@ footer {
 	transition: all 0.3s ease-in-out;
 }
 
-.footer-link:hover {
+#linkedin-anchor {
+	display: block;
+	background: white url('/images/linkedin.png') center;
+	background-size: 3rem;
+}
+
+#github-anchor {
+	display: block;
+	background: white url('/images/github.png') center;
+	background-size: 3rem;
+}
+
+.footer-anchor:hover {
 	transform: scale(1.05);
 }
 
@@ -268,18 +297,6 @@ footer {
 
 #email-link:hover {
 	text-decoration: underline;
-}
-
-#linkedin {
-	background-image: url('/images/linkedin.png');
-	background-position: center;
-	background-size: 3rem;
-}
-
-#github {
-	background-image: url('/images/github.png');
-	background-position: center;
-	background-size: 3rem;
 }
 
 #back-to-top {
@@ -374,7 +391,7 @@ footer {
 
 @media only screen and (max-width: 800px) {
 	.audio-btn {
-		position: absolute;
+		position: fixed;
 		top: 3.65rem;
 		right: 0;
 		background-size: 1.25rem;
@@ -398,7 +415,7 @@ footer {
 
 	.full-top {
 		padding: 6rem 0 0 0;
-	
+
 		width: 100vw;
 	}
 

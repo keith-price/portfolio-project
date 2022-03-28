@@ -67,20 +67,26 @@
 							alt="image showing home page of a website"
 					/></a>
 				</div>
-				<ul id="project-links">
-					<li class="apod-site-link">
-						<a href="https://apod-react-app.netlify.app/" target="_blank"
-							>Live app</a
-						>
-					</li>
-					<li class="apod-repo-link">
+				<div id="project-links">
+					<div class='project-link'>
+						<p>Live app  &#8594</p>
 						<a
+							id="react-logo"
+							href="https://apod-react-app.netlify.app/"
+							target="_blank"
+						></a>
+					</div>
+
+					<div class='project-link'>
+						<p>Repository &#8594</p>
+						<a
+							id="github-logo"
 							href="https://github.com/keith-price/portfolio-project"
 							target="_blank"
-							>Repository</a
 						>
-					</li>
-				</ul>
+						</a>
+					</div>
+				</div>
 				<p class="apod-app-description">
 					I created this React app to fetch data from NASA's APOD API. Each
 					daily image is displayed with its title and description. It seemed a
@@ -115,20 +121,20 @@
 				<a id="email-link" href="mailto:keithprice.dev@gmail.com"
 					>keithprice.dev@gmail.com</a
 				>
-				<ul class="footer-link-container">
-					<li>
-						<a
-							href="https://www.linkedin.com/in/keithprice-dev/"
-							target="_blank"
-							><button class="footer-link" id="linkedin"></button
-						></a>
-					</li>
-					<li>
-						<a href="https://github.com/keith-price" target="_blank"
-							><button class="footer-link" id="github"></button
-						></a>
-					</li>
-				</ul>
+				<div class="footer-link-container">
+					<a
+						class="footer-anchor"
+						id="linkedin-anchor"
+						href="https://www.linkedin.com/in/keithprice-dev/"
+						target="_blank"
+					></a>
+					<a
+						class="footer-anchor"
+						id="github-anchor"
+						href="https://github.com/keith-price"
+						target="_blank"
+					></a>
+				</div>
 				<p>© 2022 Keith Price</p>
 
 				<a href="#home"><button id="back-to-top"></button></a>
