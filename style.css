@@ -217,14 +217,14 @@ main {
 }
 
 #react-logo {
-	margin-left: .5rem;
+	margin-left: 0.5rem;
 	display: block;
 	background: url('/public/images/react.png') center no-repeat;
 	background-size: 1.5rem;
 }
 
 #github-logo {
-	margin-left: .5rem;
+	margin-left: 0.5rem;
 	border-radius: 50%;
 	border: 1px solid white;
 	background: white url('/public/images/github-logo.png') center no-repeat;
