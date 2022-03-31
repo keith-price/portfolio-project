@@ -140,7 +140,7 @@ issLoader.load('textures/iss/scene.gltf', (gltf) => {
 	iss = gltf.scene;
 	iss.scale.set(0.02, 0.02, 0.02);
 	iss.rotateZ(1.6);
-	iss.position.set(3.5, 0, 0);
+	iss.position.set(3.4, 0, 0);
 	scene.add(iss);
 	issOrbitCenter.add(iss);
 	// iss.castShadow = true;
@@ -217,7 +217,9 @@ standOnMoon.addEventListener('click', () => {
 			? section.classList.remove('hidden')
 			: section.classList.add('hidden');
 	});
-
+	// iss.add(camera);
+	// camera.rotateZ(.9)
+	// camera.position.set(5, 5, 40);
 	moonOrbitCenter.add(camera);
 	camera.position.set(-14.95, 1.047, 0);
 	camera.lookAt(earth.position);
@@ -231,6 +233,34 @@ leaveMoon.addEventListener('click', () => {
 	});
 
 	moonOrbitCenter.remove(camera);
+	camera.position.set(0, 0, 40);
+	camera.lookAt(0, 0, 0);
+});
+
+// fly with ISS
+const flyWithISS = document.getElementById('fly-with-iss');
+const leaveISS = document.getElementById('iss-leave');
+
+flyWithISS.addEventListener('click', () => {
+	sectionsArray.map((section) => {
+		section.classList.contains('hidden')
+			? section.classList.remove('hidden')
+			: section.classList.add('hidden');
+	});
+	iss.add(camera);
+	camera.rotateZ(.9)
+	camera.position.set(5, 5, 40);
+});
+
+// leave ISS
+leaveISS.addEventListener('click', () => {
+	sectionsArray.map((section) => {
+		section.classList.contains('hidden')
+			? section.classList.remove('hidden')
+			: section.classList.add('hidden');
+	});
+
+	iss.remove(camera);
 	camera.position.set(0, 0, 40);
 	camera.lookAt(0, 0, 0);
 });
