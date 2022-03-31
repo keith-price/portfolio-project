@@ -17,8 +17,6 @@ const camera = new THREE.PerspectiveCamera(50, wWidth / wHeight, 0.1, 10000);
 
 const renderer = new THREE.WebGLRenderer({
 	canvas: document.querySelector('#bg'),
-	// allows transparency
-	// alpha: true,
 	antialias: true,
 });
 
@@ -217,29 +215,14 @@ standOnMoon.addEventListener('click', () => {
 			? section.classList.remove('hidden')
 			: section.classList.add('hidden');
 	});
-	// iss.add(camera);
-	// camera.rotateZ(.9)
-	// camera.position.set(5, 5, 40);
 	moonOrbitCenter.add(camera);
 	camera.position.set(-14.95, 1.047, 0);
 	camera.lookAt(earth.position);
 });
 
-leaveMoon.addEventListener('click', () => {
-	sectionsArray.map((section) => {
-		section.classList.contains('hidden')
-			? section.classList.remove('hidden')
-			: section.classList.add('hidden');
-	});
-
-	moonOrbitCenter.remove(camera);
-	camera.position.set(0, 0, 40);
-	camera.lookAt(0, 0, 0);
-});
-
 // fly with ISS
 const flyWithISS = document.getElementById('fly-with-iss');
-const leaveISS = document.getElementById('iss-leave');
+const leave = document.getElementById('leave');
 
 flyWithISS.addEventListener('click', () => {
 	sectionsArray.map((section) => {
@@ -248,18 +231,19 @@ flyWithISS.addEventListener('click', () => {
 			: section.classList.add('hidden');
 	});
 	iss.add(camera);
-	camera.rotateZ(.9)
+	camera.rotateZ(0.9);
 	camera.position.set(5, 5, 40);
 });
 
-// leave ISS
-leaveISS.addEventListener('click', () => {
+// leave moon or ISS
+leave.addEventListener('click', () => {
+	console.log('leave moon clicked');
 	sectionsArray.map((section) => {
 		section.classList.contains('hidden')
 			? section.classList.remove('hidden')
 			: section.classList.add('hidden');
 	});
-
+	moonOrbitCenter.remove(camera);
 	iss.remove(camera);
 	camera.position.set(0, 0, 40);
 	camera.lookAt(0, 0, 0);
