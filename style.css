@@ -113,7 +113,7 @@ main {
 }
 
 .intro {
-	width: 30rem;
+	width: 100%;
 	background: rgba(0, 0, 0, 0.055);
 	backdrop-filter: blur(5px);
 	-webkit-backdrop-filter: blur(5px);
@@ -439,10 +439,12 @@ footer {
 		text-align: center;
 	}
 
-	.intro {
-		font-size: 1rem;
+	.quote-container {
 		width: 21rem;
+		font-size: 1rem;
 	}
+
+
 
 	.full-top {
 		padding: 6rem 0 0 0;
