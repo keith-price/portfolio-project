@@ -65,7 +65,8 @@ html {
 	text-decoration: none;
 }
 
-p {
+p,
+q {
 	text-align: justify;
 }
 
@@ -116,6 +117,10 @@ main {
 	background: rgba(0, 0, 0, 0.055);
 	backdrop-filter: blur(5px);
 	-webkit-backdrop-filter: blur(5px);
+}
+
+.quote-container {
+	width: 30rem;
 }
 
 .audio-btn {
@@ -175,8 +180,6 @@ main {
 	transition: all 0.3s ease-in-out;
 	text-align: center;
 }
-
-
 
 .btn:hover,
 .audio-btn:hover,
@@ -465,7 +468,6 @@ footer {
 		height: 5rem;
 		width: 5rem;
 	}
-
 
 	.spacer {
 		height: 15rem;
