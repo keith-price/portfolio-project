@@ -1,9 +1,9 @@
-import './style.css';
+import "./style.css";
 
-import * as THREE from 'three';
+import * as THREE from "three";
 
 // to load model for ISS
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 // allows navigation with mouse
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -16,8 +16,8 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, wWidth / wHeight, 0.1, 10000);
 
 const renderer = new THREE.WebGLRenderer({
-	canvas: document.querySelector('#bg'),
-	antialias: true,
+  canvas: document.querySelector("#bg"),
+  antialias: true,
 });
 
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -36,14 +36,14 @@ scene.add(sunLight, ambientLight);
 
 // Earth
 const earthTexture = new THREE.TextureLoader().load(
-	'/textures/2k_earth_daymap.jpg'
+  "/textures/2k_earth_daymap.jpg",
 );
 
 const earthGeometry = new THREE.SphereGeometry(3, 64, 64);
 const earthMaterial = new THREE.MeshLambertMaterial({
-	transparent: true,
-	opacity: 0.5,
-	map: earthTexture,
+  transparent: true,
+  opacity: 0.5,
+  map: earthTexture,
 });
 
 const earth = new THREE.Mesh(earthGeometry, earthMaterial);
@@ -54,12 +54,12 @@ scene.add(earth);
 
 // earth lights
 const earthLightsTexture = new THREE.TextureLoader().load(
-	'/textures/2k_earth_nightmap.jpg'
+  "/textures/2k_earth_nightmap.jpg",
 );
 
 const earthLightsGeometry = new THREE.SphereGeometry(3, 64, 64);
 const earthLightsMaterial = new THREE.MeshBasicMaterial({
-	map: earthLightsTexture,
+  map: earthLightsTexture,
 });
 
 const earthNight = new THREE.Mesh(earthLightsGeometry, earthLightsMaterial);
@@ -68,46 +68,26 @@ scene.add(earthNight);
 
 // Earth clouds sphere
 const earthCloudsTexture = new THREE.TextureLoader().load(
-	'textures/2k_earth_clouds.jpg'
+  "textures/2k_earth_clouds.jpg",
 );
 
 const earthCloudsGeometry = new THREE.SphereGeometry(3.06, 64, 64);
 const earthCloudsMaterial = new THREE.MeshLambertMaterial({
-	map: earthCloudsTexture,
-	transparent: true,
-	opacity: 0.4,
+  map: earthCloudsTexture,
+  transparent: true,
+  opacity: 0.4,
 });
 
 const earthClouds = new THREE.Mesh(earthCloudsGeometry, earthCloudsMaterial);
-// earthClouds.castShadow = true;
-// earthClouds.receiveShadow = true;
+
 wHeight > 800 ? earthClouds.position.set(0, 0, 0) : earth.position.set(0, 0, 0);
 scene.add(earthClouds);
 
-// const earthOrbitCenter = new THREE.Object3D();
-
-// earthOrbitCenter.position.set(0, 3.5, 0);
-
-// scene.add(earthOrbitCenter);
-
-// earth model - need better model
-// const earthLoader = new GLTFLoader();
-// let earth;
-// earthLoader.load('/textures/earth/scene.gltf', (gltf) => {
-// 	earth = gltf.scene;
-// 	earth.scale.set(3, 3, 3);
-// 	earth.position.set(0, 0, 0);
-// 	scene.add(earth);
-// 	earthOrbitCenter.add(earth);
-// 	// earth.castShadow = true
-// 	// earth.receiveShadow = true
-// });
-
 // Moon
-const moonTexture = new THREE.TextureLoader().load('textures/8k_moon.jpg');
+const moonTexture = new THREE.TextureLoader().load("textures/8k_moon.jpg");
 const moonGeometry = new THREE.SphereGeometry(1, 64, 64);
 const moonMaterial = new THREE.MeshLambertMaterial({
-	map: moonTexture,
+  map: moonTexture,
 });
 
 const moon = new THREE.Mesh(moonGeometry, moonMaterial);
@@ -134,45 +114,40 @@ scene.add(issOrbitCenter);
 // add ISS gltf model to the scene
 const issLoader = new GLTFLoader();
 let iss;
-issLoader.load('textures/iss/scene.gltf', (gltf) => {
-	iss = gltf.scene;
-	iss.scale.set(0.02, 0.02, 0.02);
-	iss.rotateZ(1.6);
-	iss.position.set(3.4, 0, 0);
-	scene.add(iss);
-	issOrbitCenter.add(iss);
-	// iss.castShadow = true;
-	// iss.receiveShadow = true;
+issLoader.load("textures/iss/scene.gltf", (gltf) => {
+  iss = gltf.scene;
+  iss.scale.set(0.02, 0.02, 0.02);
+  iss.rotateZ(1.6);
+  iss.position.set(3.4, 0, 0);
+  scene.add(iss);
+  issOrbitCenter.add(iss);
 });
 
 // add lunar lander
 const lunarLoader = new GLTFLoader();
 let lunarLander;
-lunarLoader.load('/textures/lunar_ship_lk_lander/scene.gltf', (gltf) => {
-	lunarLander = gltf.scene;
-	lunarLander.scale.set(0.01, 0.01, 0.01);
-	lunarLander.rotateZ(-0.237);
-	lunarLander.rotateX(-0.065);
-	lunarLander.rotateY(-2);
+lunarLoader.load("/textures/lunar_ship_lk_lander/scene.gltf", (gltf) => {
+  lunarLander = gltf.scene;
+  lunarLander.scale.set(0.01, 0.01, 0.01);
+  lunarLander.rotateZ(-0.237);
+  lunarLander.rotateX(-0.065);
+  lunarLander.rotateY(-2);
 
-	lunarLander.position.set(-14.75, 0.976, -0.06);
+  lunarLander.position.set(-14.75, 0.976, -0.06);
 
-	// lunarLander.position.set(14.75, 0.976, 0.06);
-	scene.add(lunarLander);
-	moonOrbitCenter.add(lunarLander);
-	// lunarLander.castShadow = true;
-	// lunarLander.receiveShadow = true;
+  scene.add(lunarLander);
+  moonOrbitCenter.add(lunarLander);
 });
 
 // skybox - universebox
 const skyboxTexture = new THREE.TextureLoader().load(
-	'/textures/8k_stars_milky_way.jpg'
+  "/textures/8k_stars_milky_way.jpg",
 );
 
 const skyboxGeometry = new THREE.SphereGeometry(100, 64, 64);
 const skyboxMaterial = new THREE.MeshBasicMaterial({
-	side: THREE.DoubleSide,
-	map: skyboxTexture,
+  side: THREE.DoubleSide,
+  map: skyboxTexture,
 });
 
 const universe = new THREE.Mesh(skyboxGeometry, skyboxMaterial);
@@ -181,72 +156,72 @@ universe.position.set(0, 0, 0);
 scene.add(universe);
 
 // audio controls and play/pause functions
-const playBtn = document.getElementById('play-btn');
-const siteAudio = document.getElementById('site-audio');
+const playBtn = document.getElementById("play-btn");
+const siteAudio = document.getElementById("site-audio");
 
 let audioState = false;
 
 function playAudio() {
-	siteAudio.play();
-	audioState = true;
+  siteAudio.play();
+  audioState = true;
 }
 
 function stopAudio() {
-	siteAudio.currentTime = 0;
-	siteAudio.pause();
-	audioState = false;
+  siteAudio.currentTime = 0;
+  siteAudio.pause();
+  audioState = false;
 }
 
-playBtn.addEventListener('click', () => {
-	audioState ? stopAudio() : playAudio();
+playBtn.addEventListener("click", () => {
+  audioState ? stopAudio() : playAudio();
 });
 
 // get sections to add/remove hidden class
-const sections = document.getElementsByTagName('section');
+const sections = document.getElementsByTagName("section");
 const sectionsArray = [...sections, playBtn];
 
 // stand on the moon
-const standOnMoon = document.getElementById('stand-on-moon');
-const leaveMoon = document.getElementById('moon-leave');
+const standOnMoon = document.getElementById("stand-on-moon");
+// const leaveMoon = document.getElementById("moon-leave");
 
-standOnMoon.addEventListener('click', () => {
-	sectionsArray.map((section) => {
-		section.classList.contains('hidden')
-			? section.classList.remove('hidden')
-			: section.classList.add('hidden');
-	});
-	moonOrbitCenter.add(camera);
-	camera.position.set(-14.95, 1.047, 0);
-	camera.lookAt(earth.position);
+standOnMoon.addEventListener("click", () => {
+  sectionsArray.map((section) => {
+    section.classList.contains("hidden")
+      ? section.classList.remove("hidden")
+      : section.classList.add("hidden");
+  });
+  moonOrbitCenter.add(camera);
+  camera.position.set(-14.95, 1.047, 0);
+  camera.lookAt(earth.position);
 });
 
 // fly with ISS
-const flyWithISS = document.getElementById('fly-with-iss');
-const leave = document.getElementById('leave');
+const flyWithISS = document.getElementById("fly-with-iss");
+const leave = document.getElementById("leave");
 
-flyWithISS.addEventListener('click', () => {
-	sectionsArray.map((section) => {
-		section.classList.contains('hidden')
-			? section.classList.remove('hidden')
-			: section.classList.add('hidden');
-	});
-	iss.add(camera);
-	camera.rotateZ(0.9);
-	camera.position.set(5, 5, 40);
+flyWithISS.addEventListener("click", () => {
+  sectionsArray.map((section) => {
+    section.classList.contains("hidden")
+      ? section.classList.remove("hidden")
+      : section.classList.add("hidden");
+  });
+  iss.add(camera);
+  camera.rotateZ(0.9);
+  camera.position.set(5, 5, 40);
 });
 
 // leave moon or ISS
-leave.addEventListener('click', () => {
-	console.log('leave moon clicked');
-	sectionsArray.map((section) => {
-		section.classList.contains('hidden')
-			? section.classList.remove('hidden')
-			: section.classList.add('hidden');
-	});
-	moonOrbitCenter.remove(camera);
-	iss.remove(camera);
-	camera.position.set(0, 0, 40);
-	camera.lookAt(0, 0, 0);
+leave.addEventListener("click", () => {
+  console.log("leave moon clicked");
+  sectionsArray.map((section) => {
+    section.classList.contains("hidden")
+      ? section.classList.remove("hidden")
+      : section.classList.add("hidden");
+  });
+  moonOrbitCenter.remove(camera);
+  iss.remove(camera);
+  camera.position.set(0, 0, 40);
+  camera.lookAt(0, 0, 0);
 });
 
 // const controls = new OrbitControls(camera, renderer.domElement);
@@ -254,45 +229,43 @@ leave.addEventListener('click', () => {
 // animation
 
 function animate() {
-	requestAnimationFrame(animate);
+  requestAnimationFrame(animate);
+  // earth
+  earth.rotation.y += 0.0005;
+  earthClouds.rotation.y += 0.0005;
+  earthNight.rotation.y += 0.0005;
 
-	// earth
-	// earthOrbitCenter.rotation.y += 0.0005;
-	earth.rotation.y += 0.0005;
-	earthClouds.rotation.y += 0.0005;
-	earthNight.rotation.y += 0.0005;
+  // skybox
+  universe.rotation.y += 0.0001;
 
-	// skybox
-	universe.rotation.y += 0.0001;
+  // moon
+  moonOrbitCenter.rotation.y += 0.0008;
+  moon.rotation.y += 0.0000000000019;
 
-	// moon
-	moonOrbitCenter.rotation.y += 0.0008;
-	moon.rotation.y += 0.0000000000019;
+  // iss
+  issOrbitCenter.rotation.y += 0.004;
 
-	// iss
-	issOrbitCenter.rotation.y += 0.004;
+  // controls.update();
 
-	// controls.update();
-
-	renderer.render(scene, camera);
+  renderer.render(scene, camera);
 }
 
 animate();
 
 // function that dynamically sets on window resize
 const handleWindowResize = () => {
-	wWidth = window.innerWidth;
-	wHeight = window.innerHeight;
-	camera.aspect = wWidth / wHeight;
-	camera.updateProjectionMatrix();
+  wWidth = window.innerWidth;
+  wHeight = window.innerHeight;
+  camera.aspect = wWidth / wHeight;
+  camera.updateProjectionMatrix();
 
-	// moves the lunar lander to a central position in order to be seen on narrower screens
-	if (wWidth < 700) {
-		lunarLander.position.set(-14.75, 0.976, 0);
-	} else {
-		lunarLander.position.set(-14.75, 0.976, -0.06);
-	}
+  // moves the lunar lander to a central position in order to be seen on narrower screens
+  if (wWidth < 700) {
+    lunarLander.position.set(-14.75, 0.976, 0);
+  } else {
+    lunarLander.position.set(-14.75, 0.976, -0.06);
+  }
 
-	renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(window.innerWidth, window.innerHeight);
 };
-window.addEventListener('resize', handleWindowResize, true);
+window.addEventListener("resize", handleWindowResize, true);
