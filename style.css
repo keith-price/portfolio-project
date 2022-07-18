@@ -26,6 +26,23 @@ html {
 	z-index: -1;
 }
 
+#progress-bar {
+	display: block;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	z-index: 100;
+}
+
+#loading-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 1.5rem;
+}
+
 #header {
 	position: fixed;
 	display: flex;

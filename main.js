@@ -6,7 +6,17 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 // allows navigation with mouse
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { OrbitControls } from 'three/examples/jsm/controls/
+
+const progBar = document.getElementById("progress-bar");
+const progBarText = document.getElementById("loading-text");
+THREE.DefaultLoadingManager.onLoad = function () {
+  progBar.style.display = "none";
+};
+
+THREE.DefaultLoadingManager.onProgress = function (url, items, total) {
+	
+};
 
 let wWidth = window.innerWidth;
 let wHeight = window.innerHeight;
@@ -182,7 +192,7 @@ const sectionsArray = [...sections, playBtn];
 
 // stand on the moon
 const standOnMoon = document.getElementById("stand-on-moon");
-// const leaveMoon = document.getElementById("moon-leave");
+//
 
 standOnMoon.addEventListener("click", () => {
   sectionsArray.map((section) => {
@@ -224,10 +234,7 @@ leave.addEventListener("click", () => {
   camera.lookAt(0, 0, 0);
 });
 
-// const controls = new OrbitControls(camera, renderer.domElement);
-
 // animation
-
 function animate() {
   requestAnimationFrame(animate);
   // earth
@@ -244,8 +251,6 @@ function animate() {
 
   // iss
   issOrbitCenter.rotation.y += 0.004;
-
-  // controls.update();
 
   renderer.render(scene, camera);
 }
@@ -268,4 +273,6 @@ const handleWindowResize = () => {
 
   renderer.setSize(window.innerWidth, window.innerHeight);
 };
+// try to add camera sway
+
 window.addEventListener("resize", handleWindowResize, true);
